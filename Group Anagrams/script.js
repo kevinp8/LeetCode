@@ -3,12 +3,11 @@
  * @return {string[][]}
  */
 var groupAnagrams = function(strs) {
-    let dict = {}
-    let words = [...strs].sort()
-    for (let i=0; i<words.length; i++) {
-        let word = words[i].split('').sort().join('')
-        if (word in dict) dict[word].push(words[i])
-        else dict[word] = [words[i]]
+    let words = {}
+    for (let i=0; i<strs.length; i++) {
+        let code = strs[i].split('').sort()
+        if (code in words) words[code].push(strs[i])
+        else words[code] = [strs[i]]
     }
-    return Object.values(dict).sort((a, b) => a.length-b.length)
+    return Object.values(words)
 };
