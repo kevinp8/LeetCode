@@ -20,3 +20,18 @@ var lengthOfLongestSubstring = function(s) {
 
     return maxStr.length
 };
+
+var lengthOfLongestSubstring = function(s) {
+    let sub = new Set()
+    let index = 0
+    let max = 0
+    for (let i=0; i<s.length; i++) {
+        while(sub.has(s[i])) {
+            sub.delete(s[index])
+            index++
+        }
+        sub.add(s[i])
+        max = Math.max(max, sub.size)
+    }
+    return max
+};
