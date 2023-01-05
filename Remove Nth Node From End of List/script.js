@@ -10,6 +10,25 @@
  * @param {number} n
  * @return {ListNode}
  */
+ Optimized solution:
+var removeNthFromEnd = function(head, n) {
+    let dummy = new ListNode(0, head)
+    let left = dummy
+    let right = head
+
+    while(n>0) {
+        right = right.next
+        n--
+    }
+    while(right){
+        left = left.next
+        right = right.next
+    }
+    left.next = left.next.next
+
+    return dummy.next
+};
+ 
 var removeNthFromEnd = function(head, n) {
     let nodes = []
     while (head) {
